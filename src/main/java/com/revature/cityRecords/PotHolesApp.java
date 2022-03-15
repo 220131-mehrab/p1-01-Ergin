@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class Address {
     private int houseNumber;
     private String streetName;
+    
     public Address(int houseNumber, String streetName) {
         this.houseNumber = houseNumber;
         this.streetName = streetName;
@@ -78,7 +79,7 @@ public class PotHolesApp {
                 ObjectMapper mapper = new ObjectMapper();
                 Address newAddress = mapper.readValue(req.getInputStream(), Address.class);
                 try {
-                    PreparedStatement stmt = connection.prepareStatement("insert into 'address' values (?,?)");
+                    PreparedStatement stmt = connection.prepareStatement("insert into address values (?,?)");
                     stmt.setInt(1, newAddress.getHouseNumber());
                     stmt.setString(2, newAddress.getStreetName());
                     stmt.executeUpdate();

@@ -7,6 +7,11 @@
 </head>
 <body>
     <h1>Pot Hole Reports</h1>
+    <form action="/potHolesList" method="post">
+        HouseNumber: <input type ="number" name="houseNumber" id="houseNumber"/>
+        StreeName: <input type="text" name="streetName" id="streetName"/>
+        <button type="button" onclick="postAddress()">Record Address</button>
+    </form>
     <div id="potHolesList"></div>
     <script src="main.js"></script>
 </body>
