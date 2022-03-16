@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class Address {
     private int houseNumber;
     private String streetName;
-    
+
     public Address(int houseNumber, String streetName) {
         this.houseNumber = houseNumber;
         this.streetName = streetName;
@@ -54,7 +54,6 @@ public class PotHolesApp {
         String url = "jdbc:h2:mem:test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;INIT=runscript from 'classpath:schema.sql'";
         Connection connection = DriverManager.getConnection(url, "sa", "");
         
-
         HttpServlet potHolesServlet = new HttpServlet() {
             @Override
             protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -89,8 +88,6 @@ public class PotHolesApp {
 
             }
         };
-
-        
 
         Tomcat server = new Tomcat();
         server.getConnector();

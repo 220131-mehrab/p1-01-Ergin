@@ -6,13 +6,20 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1>Pot Hole Reports</h1>
+    <h1>KC Pothole Reports</h1>
+    <h4> If you want to loop up the address already reported please use Search bar below</h4>
+    <form id="form">
+        <input type="search" id="query" name="q" placeholder="Search Address">
+        <button>Search</button>
+    </form>
+    <h4> Report an Incident</h4>
     <form action="/potHolesList" method="post">
         HouseNumber: <input type ="number" name="houseNumber" id="houseNumber"/>
         StreeName: <input type="text" name="streetName" id="streetName"/>
-        <button type="button" onclick="postAddress()">Record Address</button>
+        <button type="button" onclick="postAddress()">Report Address</button>
     </form>
     <div id="potHolesList"></div>
+    <div id="potHolesAPI"></div>
     <script src="main.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-var welcomeMsg = 'List of the Pot Holes'
+var welcomeMsg = 'Pothole Report Kansas City MO'
 
 document.querySelector('h1').innerText = welcomeMsg;
 
@@ -7,12 +7,21 @@ fetch('/potHolesList').then(resp => resp.json()).then(potHolesList => {
         }
     );
 
+fetch("https://data.kcmo.org/resource/frqd-pm5w")
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(item => {
+          let showList = document.querySelector("#potHolesAPI");
+          showList.insertAdjacentHTML("beforeend",`<p>Incident Address : ${item.incident_address} </p>`)
+      });   
+    });
+
 function listPotHolesList(json){
     return `${json.map(listPotHoleList).join('\n')}`;
 };
 
 let listPotHoleList = function(potHoleList){
-    return '<p>' + potHoleList.houseNumber + ": " + potHoleList.streetName + '</p>';
+    return '<p>' + "Incident Report : " + potHoleList.houseNumber +" "+ potHoleList.streetName + "Kansas City MO" + '</p>';
 };
 
 function postAddress(){
