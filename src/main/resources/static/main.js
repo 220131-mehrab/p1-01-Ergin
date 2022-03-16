@@ -21,15 +21,23 @@ function listPotHolesList(json){
 };
 
 let listPotHoleList = function(potHoleList){
-    return '<p>' + "Incident Report : " + potHoleList.houseNumber +" "+ potHoleList.streetName + "Kansas City MO" + '</p>';
+    return '<p>' + "Incident Report : " + potHoleList.houseNumber +" "+ potHoleList.streetName + " Kansas City MO" + '</p>';
 };
+
+// function searchAddress(){
+//     let searchedAddress= {
+//      "searchStreetName": document.getElementById("query").value
+//     }
+//     fetch("/potHolesList").then(resp=> resp.json()).then(data)
+//     }
+
 
 function postAddress(){
     let address = {
         "houseNumber":document.getElementById("houseNumber").value,
         "streetName" :document.getElementById("streetName").value
     }
-    fetch("/potHolesList",{
+fetch("/potHolesList",{
         method:"POST",
         headers: {
                 'Accept': 'application/json',
@@ -41,11 +49,11 @@ function postAddress(){
             throw new Error("unable to post");
         }
         console.log(result.text());
-    }).catch((error)=>{console.log(error);})
+
     fetch('/potHolesList').then(resp => resp.json()).then(potHolesList => {
-        document.querySelector('#potHolesList').innerHTML = listPotHolesList(potHolesList);
-        }
-    );
+            document.querySelector('#potHolesList').innerHTML = listPotHolesList(potHolesList);
+    })}  
+    ).catch((error)=>{console.log(error);});
 }
 
 
